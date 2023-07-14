@@ -2,3 +2,4 @@ cover*
 vendor
 build
 data/
+dist/

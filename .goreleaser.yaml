@@ -1,0 +1,58 @@
+# This is an example .goreleaser.yml file with some sensible defaults.
+# Make sure to check the documentation at https://goreleaser.com
+project_name: "movies"
+before:
+  hooks:
+    - go mod tidy
+    - make clean
+
+builds:
+  - id: movies
+    main: ./cmd/movies/
+    binary: movies
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+    ldflags:
+      - "-s"
+      - "-w"
+      - "-X main.appVersion={{ .Version }}"
+      - "-X main.osArch={{ .Os }}/{{ .Arch }}"
+
+archives:
+  - id: movies
+    format: tar.gz
+    builds:
+      - movies
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else }}{{ .Arch }}{{ end }}
+
+nfpms:
+  - id: movies
+    builds:
+      - movies
+    package_name: movies
+    file_name_template: "{{ .ConventionalFileName }}"
+    vendor: Fabio Ribeiro
+    homepage:  https://fabioribeiro.dev
+    maintainer: Fabio Ribeiro <me@fabioribeiro.dev>
+    description: Manages movie collection throught API
+    license: MIT
+    formats:
+      - deb
+
+checksum:
+  name_template: '{{ .ProjectName }}_checksums.txt'
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
