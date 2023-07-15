@@ -46,6 +46,9 @@ nfpms:
     license: MIT
     formats:
       - deb
+    scripts:
+      postinstall: "env/debian/post-install.sh"
+      postremove: "env/debian/post-remove.sh"
 
 checksum:
   name_template: '{{ .ProjectName }}_checksums.txt'
