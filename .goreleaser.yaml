@@ -46,7 +46,14 @@ nfpms:
     license: MIT
     formats:
       - deb
+    contents:
+      - src: "env/debian/movies.service"
+        dst: "/lib/systemd/system/movies.service"
+      - src: "env/debian/movies.conf"
+        dst: "/etc/default/movies"
+        type: config
     scripts:
+      preremove: "env/debian/pre-remove.sh"
       postinstall: "env/debian/post-install.sh"
       postremove: "env/debian/post-remove.sh"
 

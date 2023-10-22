@@ -1,0 +1,14 @@
+[Unit]
+Description=Manages movie collection throught API
+Documentation="https://github.com/faabiosr/go-movies-demo"
+
+[Service]
+EnvironmentFile=/etc/default/movies
+ExecStart=/usr/bin/movies
+Restart=on-failure
+User=movies-demo
+Group=movies-demo
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
