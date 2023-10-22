@@ -1,6 +1,8 @@
 [Unit]
 Description=Manages movie collection throught API
 Documentation="https://github.com/faabiosr/go-movies-demo"
+After=network.target
+Requires=movies.socket
 
 [Service]
 EnvironmentFile=/etc/default/movies

@@ -1,9 +1,13 @@
 package main
 
 import (
+	"context"
 	"os"
+	"os/signal"
 	"path/filepath"
+	"time"
 
+	"github.com/coreos/go-systemd/v22/activation"
 	"github.com/labstack/echo/v4"
 	mw "github.com/labstack/echo/v4/middleware"
 	glog "github.com/labstack/gommon/log"
@@ -18,6 +22,8 @@ const (
 	dbName    = "catalog.db"
 	dbPathEnv = "MOVIES_DB_PATH"
 )
+
+const timeout = 10 * time.Second
 
 func main() {
 	e := echo.New()
@@ -52,7 +58,35 @@ func main() {
 	// Start server
 	e.Logger.Infof("%s service", appName)
 
-	if err := e.Start(appAddr); err != nil {
+	go func() {
+		if err := start(e, appAddr); err != nil {
+			e.Logger.Info("shutting down the service")
+		}
+	}()
+
+	// Graceful shutdown
+	quit := make(chan os.Signal, 1)
+	signal.Notify(quit, os.Interrupt)
+
+	<-quit
+
+	ctx, cancel := context.WithTimeout(context.TODO(), timeout)
+	defer cancel()
+
+	if err := e.Shutdown(ctx); err != nil {
 		e.Logger.Fatal(err)
 	}
+}
+
+func start(e *echo.Echo, host string) error {
+	listeners, err := activation.Listeners()
+	if err != nil {
+		return nil
+	}
+
+	if len(listeners) > 0 {
+		e.Listener = listeners[0]
+	}
+
+	return e.Start(host)
 }

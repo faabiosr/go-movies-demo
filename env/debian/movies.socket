@@ -1,0 +1,11 @@
+[Unit]
+Description=Manages movie collection throught API
+Documentation="https://github.com/faabiosr/go-movies-demo"
+
+[Socket]
+ListenStream=8000
+SocketUser=movies-demo
+SocketGroup=movies-demo
+
+[Install]
+WantedBy=sockets.target

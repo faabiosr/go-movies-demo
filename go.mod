@@ -3,6 +3,7 @@ module github.com/faabiosr/go-movies-demo
 go 1.21
 
 require (
+	github.com/coreos/go-systemd/v22 v22.5.0
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/gofrs/uuid/v5 v5.0.0
 	github.com/labstack/echo/v4 v4.11.2

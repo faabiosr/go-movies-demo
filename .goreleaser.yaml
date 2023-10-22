@@ -49,6 +49,8 @@ nfpms:
     contents:
       - src: "env/debian/movies.service"
         dst: "/lib/systemd/system/movies.service"
+      - src: "env/debian/movies.socket"
+        dst: "/lib/systemd/system/movies.socket"
       - src: "env/debian/movies.conf"
         dst: "/etc/default/movies"
         type: config
