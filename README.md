@@ -1,9 +1,5 @@
 # Golang Movies API - Demo
 
-[![Codecov branch](https://img.shields.io/codecov/c/github/faabiosr/go-movies-demo/master.svg?style=flat-square)](https://codecov.io/gh/faabiosr/go-movies-demo)
-[![Go Report Card](https://goreportcard.com/badge/github.com/faabiosr/go-movies-demo?style=flat-square)](https://goreportcard.com/report/github.com/faabiosr/go-movies-demo)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://github.com/faabiosr/go-movies-demo/blob/master/LICENSE)
-
 Movies API
 
 ## Development
