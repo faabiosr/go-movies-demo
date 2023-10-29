@@ -1,6 +1,5 @@
 # Golang Movies API - Demo
-
-Movies API
+Movies API - Developed for use in my article: [Distributing a Go application without Docker](https://dev.to/faabiosr/distribuindo-uma-aplicacao-go-sem-o-docker-p73).
 
 ## Development
 
