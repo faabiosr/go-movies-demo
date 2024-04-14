@@ -26,9 +26,9 @@ jobs:
         run: git fetch --prune --unshallow
 
       - name: golanci-linter
-        uses: golangci/golangci-lint-action@v3
+        uses: golangci/golangci-lint-action@v4
         with:
-          version: v1.53.3
+          version: v1.56.2
 
       - name: configure
         run: make configure
