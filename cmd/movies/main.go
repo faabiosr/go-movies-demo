@@ -23,6 +23,8 @@ const (
 	dbPathEnv = "MOVIES_DB_PATH"
 )
 
+const dbPerm = 0o600
+
 const timeout = 10 * time.Second
 
 func main() {
@@ -45,7 +47,7 @@ func main() {
 	dbPath := filepath.Join(os.Getenv(dbPathEnv), dbName)
 
 	// Database connect
-	db, err := bolt.Open(dbPath, 0o600, nil) // nolint:gomnd
+	db, err := bolt.Open(dbPath, dbPerm, nil)
 	if err != nil {
 		e.Logger.Fatal(err)
 	}
