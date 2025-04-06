@@ -3,7 +3,8 @@ run:
   timeout: "120s"
 
 output:
-  format: "colored-line-number"
+  formats:
+    - format: "colored-line-number"
 
 linters:
   enable:
@@ -11,18 +12,17 @@ linters:
     - unconvert
     - goimports
     - unused
-    - vetshadow
     - misspell
     - nakedret
     - errcheck
     - revive
     - ineffassign
     - goconst
-    - vet
+    - govet
     - unparam
     - gofumpt
     - prealloc
-    - gomnd
+    - mnd
     - gocritic
 
 
