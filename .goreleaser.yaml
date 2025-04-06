@@ -1,6 +1,10 @@
-# This is an example .goreleaser.yml file with some sensible defaults.
-# Make sure to check the documentation at https://goreleaser.com
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+# vim: set ts=2 sw=2 tw=0 fo=cnqoj
+
+version: 2
+
 project_name: "movies"
+
 before:
   hooks:
     - go mod tidy
@@ -24,8 +28,9 @@ builds:
 
 archives:
   - id: movies
-    format: tar.gz
-    builds:
+    formats:
+      - tar.gz
+    ids:
       - movies
     name_template: >-
       {{ .ProjectName }}_
@@ -35,7 +40,7 @@ archives:
 
 nfpms:
   - id: movies
-    builds:
+    ids:
       - movies
     package_name: movies
     file_name_template: "{{ .ConventionalFileName }}"
