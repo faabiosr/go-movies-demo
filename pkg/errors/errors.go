@@ -16,6 +16,11 @@ func As(err error, target any) bool {
 	return errors.As(err, target)
 }
 
+// Is calls the standard library's errors.Is function.
+func Is(err, target error) bool {
+	return errors.Is(err, target)
+}
+
 // Unwrap calls the standard library's errors.Unwrap function.
 func Unwrap(err error) error {
 	return errors.Unwrap(err)
