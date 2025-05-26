@@ -2,10 +2,11 @@ package movies
 
 import (
 	"encoding/json"
-	"errors"
 	"time"
 
 	v "github.com/go-ozzo/ozzo-validation/v4"
+
+	"github.com/faabiosr/go-movies-demo/pkg/errors"
 )
 
 // Date it is a custom struct for masharlling and unmarshalling dates.
