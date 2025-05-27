@@ -14,6 +14,7 @@ import (
 	bolt "go.etcd.io/bbolt"
 
 	"github.com/faabiosr/go-movies-demo/internal/movies"
+	"github.com/faabiosr/go-movies-demo/pkg/middleware"
 )
 
 const (
@@ -31,6 +32,7 @@ func main() {
 	e := echo.New()
 	e.HidePort = true
 	e.HideBanner = true
+	e.HTTPErrorHandler = middleware.ErrorHandler
 	e.Logger.SetLevel(glog.INFO)
 
 	// Middlewares

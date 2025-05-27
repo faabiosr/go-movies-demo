@@ -37,13 +37,13 @@ func (ds *Datasource) Store(m Movie) (Movie, error) {
 
 		entry, err := json.Marshal(m)
 		if err != nil {
-			return errors.Public(err, "unable to store a movie")
+			return err
 		}
 
 		return bucket.Put([]byte(m.ID), entry)
 	})
 
-	return m, err
+	return m, errors.Public(err, "unable to store the movie")
 }
 
 // Fetch fetches the movie by id, if not exist an error will be returned.
