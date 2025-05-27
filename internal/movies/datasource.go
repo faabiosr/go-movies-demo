@@ -2,11 +2,12 @@ package movies
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 
 	"github.com/gofrs/uuid/v5"
 	bolt "go.etcd.io/bbolt"
+
+	"github.com/faabiosr/go-movies-demo/pkg/errors"
 )
 
 // Datasource manages the movies data.
@@ -36,7 +37,7 @@ func (ds *Datasource) Store(m Movie) (Movie, error) {
 
 		entry, err := json.Marshal(m)
 		if err != nil {
-			return err
+			return errors.Public(err, "unable to store a movie")
 		}
 
 		return bucket.Put([]byte(m.ID), entry)
