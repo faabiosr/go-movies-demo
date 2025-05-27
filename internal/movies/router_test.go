@@ -23,7 +23,7 @@ func TestRouterCreate(t *testing.T) {
 		{
 			name: "validation failed",
 			body: "{}",
-			err:  "code=400, message=released: cannot be blank; title: cannot be blank.",
+			err:  "released: cannot be blank; title: cannot be blank.",
 		},
 	}
 
