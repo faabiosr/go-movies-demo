@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	validation "github.com/go-ozzo/ozzo-validation/v4"
+	"github.com/invopop/validation"
 	"github.com/labstack/echo/v4"
 
 	"github.com/faabiosr/go-movies-demo/pkg/errors"

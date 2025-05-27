@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	v "github.com/go-ozzo/ozzo-validation/v4"
+	v "github.com/invopop/validation"
 
 	"github.com/faabiosr/go-movies-demo/pkg/errors"
 )
